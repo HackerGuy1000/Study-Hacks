@@ -1,0 +1,120 @@
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+.modal-content {
+    background-color: #b3bcc9;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+.close {
+    color: #343b40;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+.close:hover,.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+#question-text{
+  font-size: larger;
+  font-weight: bold;
+}
+.tycoon-container{
+  height:100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.points{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color:#b3bcc9;
+}
+#points{
+  margin-left: 5px;
+}
+#upgrades-list{
+  display: flex;
+  flex-direction: column;
+}
+.myBtn{
+  width: 240px;
+  height: 40px;
+  background: #2b53ca;
+  border: none;
+  margin-top: 30px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #b3bcc9;
+  transition: 0.4s ease;
+}
+.myBtn-box:hover{
+  background: #1d44b8;
+  /* color: #1d44b8; */
+}
+.myBtn a{
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+#clickable-elem{
+  cursor: pointer;
+}
+#clicker-box{
+  background-color: #343b40;
+}
+.input-field{
+  cursor: pointer;
+  background-color:#b3bcc9 ;
+}
+#submit-answer{
+  width: 240px;
+  height: 40px;
+  background: #1d44b8;
+  border: none;
+  margin-top: 30px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #b3bcc9;
+  transition: 0.4s ease;
+}
+#submit-answer:hover{
+  background: #1d44b8;
+  /* color: #1d44b8; */
+}
+#submit-answer a{
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+.myBtn{
+  cursor: pointer;
+}
+body{
+  background-color: #343b40;
+}

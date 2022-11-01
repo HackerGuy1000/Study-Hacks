@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Study Hacks</title>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+              <a href="index.html">
+                <h2 class="logo">Home</h2>
+              </a>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a class = "navtext" href="#">ABOUT</a></li>
+                    <li><a class = "navtext" href="#">CONTACT</a></li>
+                    <li><a class = "navtext" href="#">LOG IN</a></li>
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type to text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+
+        </div> 
+        <div class = "content">
+            <!--Carousel for games-->
+            <div class="slideshow-container">
+                
+                <!-- Place Holder Images -->
+                <div class="mySlides fade">
+                    
+                    <a href = "connect-four.html">
+                        <img src="images/connect-four.png" width="560">
+                    </a>
+                    
+                    <div class="text">
+                        <h1>Connect Four</h1>
+                        <br>
+                        <p>An in person co-op game wher eyou try to get four pieces in a row vertically, horizontally or diagonally. However when placing a piece you will have to answer a question, which if answered incorrectly will instead place the opponent's colour piece. </p>
+                    </div>
+                </div>
+                
+                
+                <div class="mySlides fade">
+                    
+                    <a href = "tycoon.html">
+                        <img src="images/orange_book.png" width = "560">
+                    </a>
+                    <div class="text">
+                        <h1>Clicker Game</h1>
+                        <br>
+                        <p>A clicker game where every upgrade you buy comes with a question. And if you answer the question incorrectly the money is spent on the upgrade but no buff is received. </p>
+                    </div>
+                </div>
+                
+                <!-- Change Slide Buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            
+        </div>
+        
+    </div>
+    <script src="homepage.js"></script>
+</body>
+</html>
+
+
+
+<!--// 1. Sign in Page
+// 2. Home Page -> Different pages that you can navigate to
+// 3. Games themselves -> 3 to start off
+// 4. Mock Leaderboard -->

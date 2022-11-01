@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="connect-four.css">
+    <script src="connect-four.js"></script>
+</head>
+<body>
+    <!-- <h1>Connect 4</h1> -->
+    <h2 id="winner"></h2>
+    <div id="board"></div>
+
+     <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id = "question-text">Some text in the Modal..</p>
+            <div class="answers">
+
+            <form id="QAndA">
+                <input type="radio" id="answer0" name="answer" class="input-field" value="">
+                <label class = "answerLabel" for="answer0" id="lAnswer0"></label><br>
+
+                <input type="radio" id="answer1" name="answer" class="input-field" value="">
+                <label class = "answerLabel" for="answer1" id="lAnswer1"></label><br>
+
+                <input type="radio" id="answer2" name="answer" class="input-field"  value="">
+                <label class = "answerLabel" for="answer2" id="lAnswer2"></label><br>
+
+                <input type="radio" id="answer3" name="answer" class="input-field"  value="" >
+                <label class = "answerLabel" for="answer3" id="lAnswer3"></label>
+            </form> 
+            <button type="submit" id = "submit-answer">Submit</button>   
+            
+            
+           
+
+        </div>
+    </div>
+</body>
+</html>

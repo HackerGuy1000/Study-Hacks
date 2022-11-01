@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href = "tycoon.css">
+</head>
+<body>
+    <!-- left side of screen ==> clickable element that will +1 currency on each click
+         also has pints variable (at top)-->
+    <!-- Middle/right of screen ==>
+        1. Box holding upgrades (button element) based on current points
+        2. On upgrade function ==> shows question modal; in both cases, money variable goes down based on price of upgrade, if correct, points variable goes up faster.
+    -->
+    <div class="tycoon-container">
+        <!--Left side of screen holding clickable element-->
+
+        <div class="clicker-box">
+            <div class="points">
+                <h3>Points: </h3>
+                
+                <h3 id="points">0</h3>
+            </div>
+            <div class="clickable-box">
+                <!-- <button id="clickable-elem"><Click Here!></button> -->
+                <img src="images/orange_book.png" id="clickable-elem" width="400" height = "275">
+            </div>
+            
+        </div>
+
+        <div class="upgrades-box">
+            <ul id="upgrades-list">
+                <!--<li id="upgrades-elem"></li> -->
+                
+            </ul>
+        </div>
+        
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p id = "question-text">Some text in the Modal..</p>
+                <div class="answers">
+
+                <form id="QAndA">
+                    <input type="radio" id="answer0" name="answer" class="input-field" value="">
+                    <label class = "answerLabel" for="answer0" id="lAnswer0"></label><br>
+
+                    <input type="radio" id="answer1" name="answer" class="input-field" value="">
+                    <label class = "answerLabel" for="answer1" id="lAnswer1"></label><br>
+
+                    <input type="radio" id="answer2" name="answer" class="input-field"  value="">
+                    <label class = "answerLabel" for="answer2" id="lAnswer2"></label><br>
+
+                    <input type="radio" id="answer3" name="answer" class="input-field"  value="" >
+                    <label class = "answerLabel" for="answer3" id="lAnswer3"></label>
+                </form> 
+                <button type="submit" id = "submit-answer">Submit</button>   
+                
+               
+
+            </div>
+        </div>
+          </div>
+
+
+
+
+    </div>
+    <script src = "tycoon.js"></script>
+
+</body>
+</html>
