@@ -9,41 +9,11 @@ var rows = 6;
 var columns = 7;
 var currColumns = []; //keeps track of which row each column is at.
 
-//Modal elems
 let modal = document.getElementById('myModal');
-let closeBtn = document.getElementsByClassName("close")[0];
-let submitBtn = document.getElementById('submit-answer')
-let questionNum = 1;
 
+let answerStatus = null;
 
-
-const upgrades = [
-  "Tier 1: Passive",
-  "Tier 1: Active",
-  "Tier 2: Passive",
-  "Tier 2: Active",
-  "Tier 3: Passive",
-  "Tier 3: Active",
-];
-const upgrades_type = [
-  "P",
-  "A",
-  "P",
-  "A",
-  "P",
-  "A",
-];
-
-const upgrades_val = [
-  0.1,
-  0.1,
-  0.5,
-  0.5,
-  1,
-  1,
-];
-
-const pointLevels = [10, 20, 30, 40, 50, 60]
+let iFrame = 0
 
 const questions = [
   "What is 1+1", 
@@ -116,20 +86,8 @@ function setPiece() {
     return;
   }
 
-  board[r][c] = currPlayer; //update JS board
-  let tile = document.getElementById(r.toString() + '-' + c.toString());
-  if (currPlayer == playerRed) {
-    tile.classList.add('red-piece');
-    currPlayer = playerYellow;
-  } else {
-    tile.classList.add('yellow-piece');
-    currPlayer = playerRed;
-  }
+  displayModal();
 
-  r -= 1; //update the row height for that column
-  currColumns[c] = r; //update the array
-
-  checkWinner();
 }
 
 function checkWinner() {
@@ -209,6 +167,7 @@ function setWinner(r, c) {
 }
 
 function closeModal(){
+  let modal = document.getElementById('myModal');
 
   let label0 = document.getElementById("lAnswer0")
   let label1 = document.getElementById("lAnswer1")
@@ -231,10 +190,23 @@ function closeModal(){
 
   iFrame = 0;
   
+
+  if(answerStatus == true){
+    updateBoard(r,c);
+  };
+  
+  
+  checkWinner();
+
 };
 
 function displayModal(){
-  let index = getIDNum(tierButton);
+  answerStatus = null;
+  //Modal elems
+  let modal = document.getElementById('myModal');
+  let closeBtn = document.getElementsByClassName("close")[0];
+  let submitBtn = document.getElementById('submit-answer')
+  let index = 0;
   let questionText = document.getElementById('question-text');
   let option0 = document.getElementById('lAnswer0');
   let option1 = document.getElementById('lAnswer1');
@@ -256,7 +228,19 @@ function displayModal(){
   option3.setAttribute('value',choices[index][3]);
 
   modal.style.display = 'block';
+
+  //Modal close button function
+  closeBtn.addEventListener('click', closeModal);
+
+  //Answer submit button function
+  submitBtn.addEventListener('click', submitAnswer);
 };
+
+function getIDNum(elem) {
+  let elemID = elem.id;
+  let lastLetter = elemID.charAt(elemID.length -1);
+  return parseInt(lastLetter);
+}
 
 function submitAnswer(){
   if (iFrame == 0){
@@ -276,32 +260,43 @@ function submitAnswer(){
                   }
               };
 
-              let type = upgrades_type[questionNum];
-              let val = upgrades_val[questionNum];
               
               
               if(selected == correct){
                   selectedElem.style.color = "#03a519";
                   selectedElem.innerText += " \u2705";
-                  if(type=="P"){
-                      passiveIncome += val;
-                      
-                  }if(type=="A"){
-                      activeIncome += val;
-                  
-                  }
+                  answerStatus = true;
+                  console.log(answerStatus)
               }else{
                   correctElem.style.color = "#03a519";
                   correctElem.innerText += " \u2705";
                   selectedElem.style.color = "#940c07";
                   selectedElem.innerText += " \u274c";
+                  answerStatus = false;
+                  console.log(answerStatus)
               }
               iFrame = 1;
               setTimeout(() => {closeModal();}, 2500);
+              console.log(answerStatus)
 
           }
       }
   }
 
-  // closeModal();
+};
+
+function updateBoard(r,c){
+  board[r][c] = currPlayer; //update JS board
+  let tile = document.getElementById(r.toString() + '-' + c.toString());
+  if (currPlayer == playerRed) {
+    tile.classList.add('red-piece');
+    currPlayer = playerYellow;
+  } else {
+    tile.classList.add('yellow-piece');
+    currPlayer = playerRed;
+  }
+
+  r -= 1; //update the row height for that column
+  currColumns[c] = r; //update the array
+
 };
