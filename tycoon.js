@@ -110,7 +110,8 @@ function getIDNum(elem) {
 
 function update_points(){
     pointsElem.innerHTML = points;
-    if (pointLevels.includes(points)){
+    if (pointLevels.includes(points) && obtainedPointLevels.includes(points) == false){
+        obtainedPointLevels.push(points);
         pointLevel += 1;
         //for (i=0;i < pointLevel; i++){
         let tierButton = document.createElement("button");
@@ -183,6 +184,8 @@ const upgrades_val = [
 ];
 
 const pointLevels = [10, 20, 30, 40, 50, 60]
+
+const obtainedPointLevels = [];
 
 const questions = [
     "What is 1+1", 
