@@ -1,6 +1,7 @@
 var playerRed = 'R';
 var playerYellow = 'Y';
 var currPlayer = playerRed;
+var currColor = playerRed;
 
 var gameOver = false;
 var board;
@@ -8,6 +9,9 @@ var board;
 var rows = 6;
 var columns = 7;
 var currColumns = []; //keeps track of which row each column is at.
+
+let globalR;
+let globalC;
 
 let modal = document.getElementById('myModal');
 
@@ -86,6 +90,9 @@ function setPiece() {
     return;
   }
 
+  globalR = r;
+  globalC = c;
+  
   displayModal();
 
 }
@@ -189,16 +196,43 @@ function closeModal(){
   let labels = document.getElementsByClassName("answerLabel");
 
   iFrame = 0;
-  
 
-  if(answerStatus == true){
-    updateBoard(r,c);
-  };
+  if(answerStatus == false){
+    if (currPlayer == playerRed) {
+      currColor = playerYellow;
+      console.log(currColor);
+      console.log(currPlayer);
+      
+    } 
+    else if (currPlayer == playerYellow) {
+      console.log(currColor);
+      console.log(currPlayer);
+
+    }
+  }  
+  updateBoard(globalR,globalC);
   
   
   checkWinner();
 
+  displayPlayer();
+
 };
+
+function displayPlayer(){
+  let playerText = document.getElementById("currPlayer")
+  if (currPlayer == playerRed) {
+    playerText.innerText = "Player Red";
+    playerText.style.color = "Red"
+    
+  } 
+  if (currPlayer == playerYellow) {
+    playerText.innerText = "Player Yellow";
+    playerText.style.color = "Yellow"
+
+  }
+  
+}
 
 function displayModal(){
   answerStatus = null;
@@ -206,7 +240,7 @@ function displayModal(){
   let modal = document.getElementById('myModal');
   let closeBtn = document.getElementsByClassName("close")[0];
   let submitBtn = document.getElementById('submit-answer')
-  let index = 0;
+  let index = Math.floor(Math.random() * 5); // generates random number 
   let questionText = document.getElementById('question-text');
   let option0 = document.getElementById('lAnswer0');
   let option1 = document.getElementById('lAnswer1');
@@ -266,18 +300,15 @@ function submitAnswer(){
                   selectedElem.style.color = "#03a519";
                   selectedElem.innerText += " \u2705";
                   answerStatus = true;
-                  console.log(answerStatus)
               }else{
                   correctElem.style.color = "#03a519";
                   correctElem.innerText += " \u2705";
                   selectedElem.style.color = "#940c07";
                   selectedElem.innerText += " \u274c";
                   answerStatus = false;
-                  console.log(answerStatus)
               }
               iFrame = 1;
-              setTimeout(() => {closeModal();}, 2500);
-              console.log(answerStatus)
+              // setTimeout(() => {closeModal();}, 2500);
 
           }
       }
