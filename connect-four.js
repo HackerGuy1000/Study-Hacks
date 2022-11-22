@@ -165,11 +165,18 @@ function checkWinner() {
 
 function setWinner(r, c) {
   let winner = document.getElementById('winner');
+
+  let playerText = document.getElementById("currPlayer")
   if (board[r][c] == playerRed) {
     winner.innerText = 'Red Wins';
+    winner.style.color = "red"
   } else {
     winner.innerText = 'Yellow Wins';
+    winner.style.color = "yellow"
   }
+
+  playerText.innerText = "";
+
   gameOver = true;
 }
 
@@ -180,11 +187,18 @@ function closeModal(){
   let label1 = document.getElementById("lAnswer1")
   let label2 = document.getElementById("lAnswer2") 
   let label3 = document.getElementById("lAnswer3") 
+  let errorText = document.getElementById("error-text")
 
   label0.style.color = "black";
   label1.style.color = "black";
   label2.style.color = "black";
   label3.style.color = "black";
+
+  if(answerStatus == null){
+    errorText.innerText = "You need to submit an answer first";
+    errorText.style.color = "red"
+    return;
+  } 
 
   modal.style.display = 'none';
   
@@ -197,19 +211,21 @@ function closeModal(){
 
   iFrame = 0;
 
-  if(answerStatus == false){
-    if (currPlayer == playerRed) {
-      currColor = playerYellow;
-      console.log(currColor);
-      console.log(currPlayer);
-      
-    } 
-    else if (currPlayer == playerYellow) {
-      console.log(currColor);
-      console.log(currPlayer);
 
+   if(answerStatus == false){
+      if (currPlayer == playerRed) {
+        currColor = playerYellow;
+      } if (currPlayer == playerYellow) {
+        currColor = playerRed  
+      }
+
+      console.log("Color: "+ currColor);
+      console.log("Player: "+ currPlayer);
+  }else if(answerStatus == true){
+      console.log("Color: "+ currColor);
+      console.log("Player: "+ currPlayer);
     }
-  }  
+
   updateBoard(globalR,globalC);
   
   
@@ -246,6 +262,10 @@ function displayModal(){
   let option1 = document.getElementById('lAnswer1');
   let option2 = document.getElementById('lAnswer2');
   let option3 = document.getElementById('lAnswer3');
+
+  let errorText = document.getElementById("error-text")
+
+
   questionText.innerText = questions[index];
   questionNum = index;
 
@@ -260,6 +280,8 @@ function displayModal(){
   option1.setAttribute('value',choices[index][1]);
   option2.setAttribute('value',choices[index][2]);
   option3.setAttribute('value',choices[index][3]);
+
+  errorText.innerText = "";
 
   modal.style.display = 'block';
 
@@ -317,15 +339,38 @@ function submitAnswer(){
 };
 
 function updateBoard(r,c){
-  board[r][c] = currPlayer; //update JS board
+  board[r][c] = currColor; //update JS board
   let tile = document.getElementById(r.toString() + '-' + c.toString());
-  if (currPlayer == playerRed) {
+  if (currColor == playerRed && currPlayer == playerRed) {
     tile.classList.add('red-piece');
     currPlayer = playerYellow;
-  } else {
+    currColor = playerYellow
+    console.log("Set to yellow if color is red and player is red")
+
+  } else if (currColor == playerRed && currPlayer == playerYellow) {
+    tile.classList.add('red-piece');
+    currPlayer = playerRed;
+    currColor = playerRed
+    console.log("Set to red if color is red and player is yellow")
+
+
+  } else if (currColor == playerYellow && currPlayer == playerYellow) {
     tile.classList.add('yellow-piece');
     currPlayer = playerRed;
+    currColor = playerRed
+    console.log("Set to red if color is yellow and player is yellow")
+
+  } else if(currColor == playerYellow && currPlayer == playerRed) {
+    tile.classList.add('yellow-piece');
+    currPlayer = playerYellow;
+    currColor = playerYellow
+    console.log("Set to yellow if color is yellow and player is red")
   }
+
+  console.log(answerStatus);
+
+
+
 
   r -= 1; //update the row height for that column
   currColumns[c] = r; //update the array
