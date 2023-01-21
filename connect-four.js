@@ -165,8 +165,8 @@ function checkWinner() {
 
 function setWinner(r, c) {
   let winner = document.getElementById('winner');
+  clearPlayer();
 
-  let playerText = document.getElementById("currPlayer")
   if (board[r][c] == playerRed) {
     winner.innerText = 'Red Wins';
     winner.style.color = "red"
@@ -175,7 +175,7 @@ function setWinner(r, c) {
     winner.style.color = "yellow"
   }
 
-  playerText.innerText = "";
+ 
 
   gameOver = true;
 }
@@ -374,5 +374,13 @@ function updateBoard(r,c){
 
   r -= 1; //update the row height for that column
   currColumns[c] = r; //update the array
+
+};
+
+function clearPlayer(){
+  p = document.getElementById("currPlayer")
+  console.log(p);
+  p.innerText = "";
+  console.log(p.innerText);
 
 };
