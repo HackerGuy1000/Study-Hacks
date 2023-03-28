@@ -46,7 +46,7 @@ function closeModal(){
     
 };
 
-function submitAnswer(){
+function submitAnswer(){ //Displays whether or not the user is correct
     if (iFrame == 0){
         let answers = document.getElementsByClassName("input-field");
         for (var answer of answers){
@@ -91,7 +91,6 @@ function submitAnswer(){
         }
     }
 
-    // closeModal();
 };
 
 //Modal close button function
@@ -108,7 +107,7 @@ function getIDNum(elem) {
     return parseInt(lastLetter);
 }
 
-function update_points(){
+function update_points(){ 
     pointsElem.innerHTML = points;
     if (pointLevels.includes(points) && obtainedPointLevels.includes(points) == false){
         obtainedPointLevels.push(points);
@@ -218,12 +217,12 @@ const choices = [
 
 let numQuestion = 0;
 
-function incrementPoints() {
+function incrementPoints() { //Actively increment points
     points = points + activeIncome;
     points = Math.ceil(points * 10) / 10;
 }
 
-function passiveIncrementation(){
+function passiveIncrementation(){ //Passively increment points over time
     points += passiveIncome;
     points = Math.ceil(points * 10) / 10;
     pointsElem.innerHTML = points;

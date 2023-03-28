@@ -47,7 +47,7 @@ const choices = [
 
 ];
 
-
+//Sets the board when the window loads in 
 window.onload = function () {
   setGame();
 };
@@ -177,10 +177,10 @@ function setWinner(r, c) {
 
  
 
-  gameOver = true;
+  gameOver = true; //Ends the game after determining the winner
 }
 
-function closeModal(){
+function closeModal(){ //Resets and closes modal only if an answer has been selected
   let modal = document.getElementById('myModal');
 
   let label0 = document.getElementById("lAnswer0")
@@ -218,13 +218,7 @@ function closeModal(){
       } if (currPlayer == playerYellow) {
         currColor = playerRed  
       }
-
-      console.log("Color: "+ currColor);
-      console.log("Player: "+ currPlayer);
-  }else if(answerStatus == true){
-      console.log("Color: "+ currColor);
-      console.log("Player: "+ currPlayer);
-    }
+  }
 
   updateBoard(globalR,globalC);
   
@@ -235,7 +229,7 @@ function closeModal(){
 
 };
 
-function displayPlayer(){
+function displayPlayer(){ //Shows who the current turn belongs to
   let playerText = document.getElementById("currPlayer")
   if (currPlayer == playerRed) {
     playerText.innerText = "Player Red";
@@ -292,7 +286,7 @@ function displayModal(){
   submitBtn.addEventListener('click', submitAnswer);
 };
 
-function getIDNum(elem) {
+function getIDNum(elem) { //Grabs the id of and element
   let elemID = elem.id;
   let lastLetter = elemID.charAt(elemID.length -1);
   return parseInt(lastLetter);
@@ -318,19 +312,18 @@ function submitAnswer(){
 
               
               
-              if(selected == correct){
+              if(selected == correct){ //Assigns Green Text and ✅
                   selectedElem.style.color = "#03a519";
                   selectedElem.innerText += " \u2705";
                   answerStatus = true;
-              }else{
+              }else{ //Assigns Red Text and ❌
                   correctElem.style.color = "#03a519";
                   correctElem.innerText += " \u2705";
                   selectedElem.style.color = "#940c07";
                   selectedElem.innerText += " \u274c";
                   answerStatus = false;
               }
-              iFrame = 1;
-              // setTimeout(() => {closeModal();}, 2500);
+              iFrame = 1; //Prevents user from submitting multiple times
 
           }
       }
@@ -345,29 +338,24 @@ function updateBoard(r,c){
     tile.classList.add('red-piece');
     currPlayer = playerYellow;
     currColor = playerYellow
-    console.log("Set to yellow if color is red and player is red")
 
   } else if (currColor == playerRed && currPlayer == playerYellow) {
     tile.classList.add('red-piece');
     currPlayer = playerRed;
     currColor = playerRed
-    console.log("Set to red if color is red and player is yellow")
 
 
   } else if (currColor == playerYellow && currPlayer == playerYellow) {
     tile.classList.add('yellow-piece');
     currPlayer = playerRed;
     currColor = playerRed
-    console.log("Set to red if color is yellow and player is yellow")
 
   } else if(currColor == playerYellow && currPlayer == playerRed) {
     tile.classList.add('yellow-piece');
     currPlayer = playerYellow;
     currColor = playerYellow
-    console.log("Set to yellow if color is yellow and player is red")
   }
 
-  console.log(answerStatus);
 
 
 
@@ -379,8 +367,6 @@ function updateBoard(r,c){
 
 function clearPlayer(){
   p = document.getElementById("currPlayer")
-  console.log(p);
   p.innerText = "";
-  console.log(p.innerText);
 
 };

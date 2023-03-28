@@ -8,14 +8,8 @@
     <link rel="stylesheet" href = "tycoon.css">
 </head>
 <body>
-    <!-- left side of screen ==> clickable element that will +1 currency on each click
-         also has pints variable (at top)-->
-    <!-- Middle/right of screen ==>
-        1. Box holding upgrades (button element) based on current points
-        2. On upgrade function ==> shows question modal; in both cases, money variable goes down based on price of upgrade, if correct, points variable goes up faster.
-    -->
     <div class="tycoon-container">
-        <!--Left side of screen holding clickable element-->
+        <!--Top Middle of screen holding clickable element-->
 
         <div class="clicker-box">
             <div class="points">
@@ -23,16 +17,15 @@
                 
                 <h3 id="points">0</h3>
             </div>
-            <div class="clickable-box">
-                <!-- <button id="clickable-elem"><Click Here!></button> -->
+            <div class="clickable-box"> <!--Clickable element for the game-->
                 <img src="images/orange_book.png" id="clickable-elem" width="400" height = "275">
             </div>
             
         </div>
-
+        
+        <!--List of upgrades to be added as the user collects points-->
         <div class="upgrades-box">
             <ul id="upgrades-list">
-                <!--<li id="upgrades-elem"></li> -->
                 
             </ul>
         </div>
